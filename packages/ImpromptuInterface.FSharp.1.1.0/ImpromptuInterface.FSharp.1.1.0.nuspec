@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>ImpromptuInterface.FSharp</id>
+    <version>1.1.0</version>
+    <title>ImpromptuInterface.FSharp</title>
+    <authors>Jay Tuley</authors>
+    <owners>Jay Tuley</owners>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+    <projectUrl>http://code.google.com/p/impromptu-interface/</projectUrl>
+    <iconUrl>http://impromptu-interface.googlecode.com/files/ImpromptuInterface.FSharp-Icon.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A complete dlr based dynamic operator implementation for F#</description>
+    <summary>A complete dlr based dynamic operator implementation for F#</summary>
+    <copyright>2011 Ekon Benefits</copyright>
+    <tags>dynamic .net40 FSharp dlr impromptu interface</tags>
+    <dependencies>
+      <dependency id="ImpromptuInterface" version="5.6.2" />
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="Microsoft.CSharp" targetFramework="" />
+    </frameworkAssemblies>
+  </metadata>
+</package>

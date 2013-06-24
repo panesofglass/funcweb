@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Frank</id>
+    <version>0.8.26</version>
+    <title>Frank</title>
+    <authors>Ryan Riley</authors>
+    <owners>Ryan Riley</owners>
+    <licenseUrl>http://github.com/frank-fs/frank/raw/master/LICENSE.txt</licenseUrl>
+    <projectUrl>http://github.com/frank-fs/frank</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A functional web application hosting and routing domain-specific language.</description>
+    <releaseNotes />
+    <copyright />
+    <language />
+    <tags>web dsl routing hosting http fsharp</tags>
+    <dependencies>
+      <dependency id="AspNetWebApi.Core" version="[4.0.20505.0]" />
+      <dependency id="FSharpx.Core" version="[1.6.1]" />
+      <dependency id="FSharpx.Http" version="[1.6.1]" />
+      <dependency id="ImpromptuInterface" version="[5.6.7]" />
+      <dependency id="ImpromptuInterface.FSharp" version="[1.1.0]" />
+    </dependencies>
+  </metadata>
+</package>
