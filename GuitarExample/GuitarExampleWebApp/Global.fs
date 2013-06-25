@@ -2,7 +2,6 @@
 
 open System.Net.Http
 open System.Web.Http
-open Frank
 
 type Guitar() = 
     member val Name = "" with get, set
@@ -40,71 +39,9 @@ module Guitars =
         | None -> None
 
 
-
 (**
  * Expose APIs
  *)
-module Api =
-    open System
-    open System.Net
-    open System.Net.Http
-    open Frank
-    open Guitars
-
-    (** Guitar API **)
-    let getGuitars (request: HttpRequestMessage) = async {
-        return request.CreateResponse(HttpStatusCode.OK, getGuitars())
-    }
-
-    let postGuitar (request: HttpRequestMessage) = async {
-        let! guitarData = request.Content.AsyncReadAs<Newtonsoft.Json.Linq.JToken>()
-        //let! guitar = request.Content.AsyncReadAs<Guitar>()
-        let guitar = Guitar(Name = (guitarData.SelectToken("name") |> string))
-        match addGuitar guitar with
-        | Some() ->
-            let response = request.CreateResponse(HttpStatusCode.Created, guitar)
-            let location = "/guitar/" + guitar.Name
-            response.Headers.Location <- Uri(request.RequestUri, location)
-            return response
-        | None ->
-            return request.CreateErrorResponse(HttpStatusCode.BadRequest, "You must supply a name.")
-    }
-
-    let guitarsResource = route "guitars" (get getGuitars <|> post postGuitar)
-
-
-    (** Guitar API **)
-    let getId request =
-        match getParam request "id" with
-        | Some(name) -> Some(string name)
-        | None -> None
-
-    let getGuitar (request: HttpRequestMessage) = async {
-        match getId request with
-        | Some(name) ->
-            match Guitars.getGuitar name with
-            | Some(guitar) ->
-                return request.CreateResponse(HttpStatusCode.OK, guitar)
-            | None ->
-                return request.CreateResponse(HttpStatusCode.NotFound)
-        | None ->
-            return request.CreateResponse(HttpStatusCode.NotFound)
-    }
-
-    let deleteGuitar (request: HttpRequestMessage) = async {
-        match getId request with
-        | Some(name) ->
-            match removeGuitar name with
-            | Some() -> 
-                return request.CreateResponse(HttpStatusCode.NoContent)
-            | None ->
-                return request.CreateResponse(HttpStatusCode.NotFound)
-        | None ->
-            return request.CreateResponse(HttpStatusCode.NotFound)
-    }
-
-    let guitarResource = route "guitar/{id}" (get getGuitar <|> delete deleteGuitar)
-
 
 
 (**
@@ -116,7 +53,7 @@ type Global() =
     member this.Start() =
         let config = GlobalConfiguration.Configuration
         config
-        |> Frank.Core.register [ Api.guitarsResource; Api.guitarResource ]
+        |> Frank.Core.register [ (* Add APIs here *) ]
         |> ignore
 
         config.Formatters.JsonFormatter.SerializerSettings.ContractResolver <-
