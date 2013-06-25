@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuitarExampleWeb", "GuitarE
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "GuitarExampleWebApp", "GuitarExample\GuitarExampleWebApp\GuitarExampleWebApp.fsproj", "{A126575F-C66E-42BF-A70F-655D4C3F0069}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Console", "GuitarExample\Console\Console.fsproj", "{8995A0B8-D7D7-404E-8763-B8687214BF7B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{A126575F-C66E-42BF-A70F-655D4C3F0069}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A126575F-C66E-42BF-A70F-655D4C3F0069}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A126575F-C66E-42BF-A70F-655D4C3F0069}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8995A0B8-D7D7-404E-8763-B8687214BF7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8995A0B8-D7D7-404E-8763-B8687214BF7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8995A0B8-D7D7-404E-8763-B8687214BF7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8995A0B8-D7D7-404E-8763-B8687214BF7B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
