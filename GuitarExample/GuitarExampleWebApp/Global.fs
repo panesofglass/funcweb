@@ -53,7 +53,7 @@ type Global() =
     member this.Start() =
         let config = GlobalConfiguration.Configuration
         config
-        |> Frank.Core.register [ (* Add APIs here *) ]
+        |> HttpResource.register [ (* Add APIs here *) ]
         |> ignore
 
         config.Formatters.JsonFormatter.SerializerSettings.ContractResolver <-
