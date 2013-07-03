@@ -4,7 +4,10 @@ open System.Net.Http
 open System.Web.Http
 
 type Guitar() = 
-    member val Name = "" with get, set
+    let mutable name = ""
+    member x.Name
+        with get() = name
+        and set(v) = name <- v
 
 (**
  * Define Guitar catalog operations
@@ -42,7 +45,8 @@ module Guitars =
 (**
  * Expose APIs
  *)
-
+module Api =
+    () // TODO: implement APIs
 
 (**
  * Run the app in ASP.NET

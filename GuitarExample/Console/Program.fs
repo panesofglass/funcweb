@@ -10,7 +10,6 @@ let (|OK|BadRequest|NotFound|Unknown|) (response: HttpResponseMessage) =
     | HttpStatusCode.NotFound -> NotFound(response.Headers, response.Content)
     | _ -> Unknown(response.Headers, response.Content)
 
-
 [<EntryPoint>]
 let main argv = 
     let client = new HttpClient()
@@ -22,18 +21,16 @@ let main argv =
     async {
         use! response = Async.AwaitTask <| client.SendAsync(request, Async.DefaultCancellationToken)
         match response with
-        | OK(_, content) ->
-            let! result = Async.AwaitTask <| content.ReadAsStringAsync()
+        | OK(_, content) -> // content removed for clarity
+            let! result = content.AsyncReadAsString()
             Console.WriteLine("OK with " + result)
         | BadRequest(_, content) ->
-            let! result = Async.AwaitTask <| content.ReadAsStringAsync()
+            let! result = content.AsyncReadAsString()
             Console.WriteLine("Bad Request with " + result)
         | NotFound(_, content) ->
-            let! result = Async.AwaitTask <| content.ReadAsStringAsync()
+            let! result = content.AsyncReadAsString()
             Console.WriteLine("Not Found with " + result)
-        | Unknown(_, content) ->
-            let! result = Async.AwaitTask <| content.ReadAsStringAsync()
-            Console.WriteLine("Something else with " + result)
+        | Unknown(_,_) -> Console.WriteLine("Unexpected result")
     } |> Async.RunSynchronously
 
     Console.ReadLine() |> ignore
